@@ -8,7 +8,7 @@
     <img
       src="/assets/bg-header-mobile.svg"
       alt="header pattern"
-      class="bg-cstm-primary-desaturated-dark-cyan"
+      class="bg-cstm-primary-desaturated-dark-cyan w-full"
     />
     <div class="mt-10 px-8">
       {#each listingsData as listing}
