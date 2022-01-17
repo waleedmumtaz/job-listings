@@ -24,7 +24,7 @@
     />
     <form
       on:submit|preventDefault
-      class="max-w-5xl mx-auto -translate-y-8 relative"
+      class="max-w-5xl mx-auto -translate-y-8 relative px-4"
     >
       <input
         type="text"
