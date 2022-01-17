@@ -1,5 +1,12 @@
 <script>
+  import { selectedItems } from './stores'
   export let listing
+
+  const addToSelectedItems = (item) => {
+    if (!$selectedItems.includes(item)) {
+      $selectedItems = [...$selectedItems, item]
+    }
+  }
 </script>
 
 <div>
@@ -41,7 +48,11 @@
           </div>
         </div>
         <!-- listing position -->
-        <p class="font-bold mb-1 md:text-lg">{listing.position}</p>
+        <p
+          class="font-bold mb-1 md:text-lg hover:text-cstm-primary-desaturated-dark-cyan cursor-pointer"
+        >
+          {listing.position}
+        </p>
         <div
           class="flex justify-start items-center gap-2 text-xs md:text-sm text-cstm-neutral-dark-grayish-cyan mb-5 md:mb-0"
         >
@@ -68,19 +79,22 @@
     >
       <!-- listing role -->
       <span
-        class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold p-2 rounded-lg"
+        on:click={() => addToSelectedItems(listing.role)}
+        class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
         >{listing.role}</span
       >
       <!-- listing level -->
       <span
-        class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold p-2 rounded-lg"
+        on:click={() => addToSelectedItems(listing.level)}
+        class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
         >{listing.level}</span
       >
       <!-- listing languages -->
       <span class="flex flex-wrap items-center gap-x-4 gap-y-2">
         {#each listing.languages as language}
           <span
-            class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold p-2 rounded-lg"
+            on:click={() => addToSelectedItems(language)}
+            class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
             >{language}
           </span>
         {/each}
@@ -89,7 +103,8 @@
       <span class="flex flex-wrap items-center gap-x-4 gap-y-2">
         {#each listing.tools as tool}
           <span
-            class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold p-2 rounded-lg"
+            on:click={() => addToSelectedItems(tool)}
+            class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
             >{tool}
           </span>
         {/each}

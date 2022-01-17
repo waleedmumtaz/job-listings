@@ -16,7 +16,9 @@
   />
 </svelte:head>
 
-<div class="min-h-screen font-spartan bg-cstm-neutral-light-grayish-cyan-bg">
+<div
+  class="min-h-screen font-spartan bg-cstm-neutral-light-grayish-cyan-bg pb-10"
+>
   <Listings />
   <!-- <Footer /> -->
 </div>
