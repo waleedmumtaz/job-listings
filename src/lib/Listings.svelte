@@ -8,9 +8,14 @@
     <img
       src="/assets/bg-header-mobile.svg"
       alt="header pattern"
-      class="bg-cstm-primary-desaturated-dark-cyan w-full"
+      class="bg-cstm-primary-desaturated-dark-cyan w-full md:hidden"
     />
-    <div class="mt-10 px-8">
+    <img
+      src="/assets/bg-header-desktop.svg"
+      alt="header pattern"
+      class="hidden md:block w-full bg-cstm-primary-desaturated-dark-cyan"
+    />
+    <div class="mt-10 px-8 md:max-w-6xl md:mx-auto">
       {#each listingsData as listing}
         <ListingItem {listing} />
       {/each}
