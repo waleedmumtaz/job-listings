@@ -3,10 +3,25 @@
   import ListingItem from './listing-item.svelte'
   import { selectedItems } from './stores'
 
+  let filteredListings = []
+
   const clearFilters = () => {
     $selectedItems = []
-
     console.log('filters cleared')
+  }
+
+  $: {
+    if (selectedItems) {
+      filteredListings = listingsData.filter((listing) => {
+        const tags = [listing.level, listing.role].concat(
+          listing.tools,
+          listing.languages
+        )
+        return $selectedItems.every((f) => tags.includes(f))
+      })
+    } else {
+      filteredListings = listingsData
+    }
   }
 </script>
 
@@ -24,25 +39,27 @@
     />
     <form
       on:submit|preventDefault
-      class="max-w-5xl mx-auto -translate-y-8 relative px-4"
+      class={`${
+        $selectedItems.length === 0 ? 'invisible' : ''
+      } max-w-5xl mx-auto -translate-y-8 relative px-12`}
     >
       <input
         type="text"
         bind:value={$selectedItems}
         placeholder="Filter items here.."
-        class="p-5 w-full rounded-md focus:outline focus:outline-cstm-neutral-dark-grayish-cyan focus:outline-2"
+        class="p-5 w-full rounded-md focus:outline-none shadow-lg"
       />
-      <p
+      <button
         on:click={clearFilters}
         class={`${
           $selectedItems.length > 0 ? 'block' : 'hidden'
-        } absolute top-5 right-5 text-sm font-bold cursor-pointer hover:text-cstm-primary-desaturated-dark-cyan hover:underline`}
+        } absolute top-5 right-16 text-sm font-bold cursor-pointer hover:text-cstm-primary-desaturated-dark-cyan hover:underline`}
       >
         Clear
-      </p>
+      </button>
     </form>
     <div class="mt-10 px-8 md:max-w-6xl md:mx-auto">
-      {#each listingsData as listing}
+      {#each filteredListings as listing}
         <ListingItem {listing} />
       {/each}
     </div>
