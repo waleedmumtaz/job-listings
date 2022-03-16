@@ -48,6 +48,7 @@
         bind:value={$selectedItems}
         placeholder="Filter items here.."
         class="p-5 w-full rounded-md focus:outline-none shadow-lg"
+        readonly
       />
       <button
         on:click={clearFilters}
