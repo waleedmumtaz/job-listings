@@ -1,7 +1,7 @@
 <script>
   import { fade, slide } from 'svelte/transition'
   import listingsData from '../../data.json'
-  import ListingItem from './listing-item.svelte'
+  import ListingItem from './ListingItem.svelte'
   import { selectedItems } from './stores'
 
   let animate = true
@@ -33,7 +33,7 @@
   }
 </script>
 
-<main>
+<main class="flex-1">
   <div>
     <img
       src="/assets/bg-header-mobile.svg"
@@ -45,11 +45,11 @@
       alt="header pattern"
       class="hidden md:block w-full bg-cstm-primary-desaturated-dark-cyan"
     />
-    <div class="mx-8">
+    <div class="mx-8 relative">
       <div
         class={`${
           $selectedItems.length === 0 ? 'invisible' : ''
-        } bg-white flex justify-between items-center max-w-5xl mx-auto p-5 rounded-lg -translate-y-8`}
+        } bg-white flex justify-between items-center max-w-5xl mx-auto p-5 rounded-lg md:absolute -translate-y-8 w-full left-0 right-0`}
       >
         <div class="flex flex-wrap gap-3">
           {#if animate}
@@ -62,7 +62,7 @@
                 <button
                   on:click|preventDefault={() => removeSelectedItem(item)}
                   class="bg-cstm-primary-desaturated-dark-cyan flex items-center
-                h-full px-2 rounded-r-md"
+                  h-full px-2 rounded-r-md"
                 >
                   <img src="/assets/icon-remove.svg" alt="remove" />
                 </button>
@@ -82,7 +82,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-10 px-8 md:max-w-6xl md:mx-auto">
+    <div class="mt-10 md:mt-20 px-8 md:max-w-6xl md:mx-auto">
       {#if animate}
         {#each filteredListings as listing}
           <div transition:slide>
