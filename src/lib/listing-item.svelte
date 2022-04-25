@@ -48,11 +48,12 @@
           </div>
         </div>
         <!-- listing position -->
-        <p
+        <a
+          href="/#"
           class="font-bold mb-1 md:text-lg hover:text-cstm-primary-desaturated-dark-cyan cursor-pointer"
         >
           {listing.position}
-        </p>
+        </a>
         <div
           class="flex justify-start items-center gap-2 text-xs md:text-sm text-cstm-neutral-dark-grayish-cyan mb-5 md:mb-0"
         >
@@ -78,35 +79,35 @@
       class="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-self-end"
     >
       <!-- listing role -->
-      <span
+      <button
         on:click={() => addToSelectedItems(listing.role)}
         class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
-        >{listing.role}</span
+        >{listing.role}</button
       >
       <!-- listing level -->
-      <span
+      <button
         on:click={() => addToSelectedItems(listing.level)}
         class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
-        >{listing.level}</span
+        >{listing.level}</button
       >
       <!-- listing languages -->
       <span class="flex flex-wrap items-center gap-x-4 gap-y-2">
         {#each listing.languages as language}
-          <span
+          <button
             on:click={() => addToSelectedItems(language)}
             class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
             >{language}
-          </span>
+          </button>
         {/each}
       </span>
       <!-- listing tools -->
       <span class="flex flex-wrap items-center gap-x-4 gap-y-2">
         {#each listing.tools as tool}
-          <span
+          <button
             on:click={() => addToSelectedItems(tool)}
             class="bg-cstm-neutral-light-grayish-cyan-bg text-cstm-primary-desaturated-dark-cyan font-bold px-3 pt-2 rounded-md hover:bg-cstm-primary-desaturated-dark-cyan hover:text-white cursor-pointer"
             >{tool}
-          </span>
+          </button>
         {/each}
       </span>
     </span>
