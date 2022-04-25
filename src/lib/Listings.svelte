@@ -85,7 +85,7 @@
     <div class="mt-10 md:mt-20 px-8 md:max-w-6xl md:mx-auto">
       {#if animate}
         {#each filteredListings as listing}
-          <div transition:slide>
+          <div transition:slide|local>
             <ListingItem {listing} />
           </div>
         {/each}
